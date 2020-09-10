@@ -2,41 +2,45 @@
 const quizContainer = document.getElementById("quiz");
 const resultsContainer = document.getElementById("results");
 const startButton = document.getElementById("Start");
+const timeEl = document.querySelector(".time");
+const question = document.querySelector("#question");
+const button1 = document.querySelector("#button1");
+const button2 = document.querySelector("#button2");
+const button3 = document.querySelector("#button3");
 
-//build quiz, show results
-function operateQuiz() { }
+// when you click on the start button, the timer should start
 
 function startQuiz() {
     // hide start button
     startButton.style.visibility = "hidden";
     //start timer
 
-    //show Q and As
+    let secondsLeft = 60
+
+    // execute timer
+    function setTime() {
+        let timerInterval = setInterval(function () {
+            secondsLeft--;
+
+            timeEl.textContent = secondsLeft;
+
+            if (secondsLeft === 0) {
+                clearInterval(timerInterval);
+
+            }
+
+        }, 1000);
+    }
+    setTime();
 
 
-}
-// execute timer
-let secondsLeft = 60
-
-function setTime() {
-    let timerInterval = setInterval(function () {
-        secondsLeft--;
-
-        timeEl.textContent = secondsLeft;
-
-        if (secondsLeft === 0) {
-            clearInterval(timerInterval);
-
-        }
-
-    }, 1000);
 }
 
 startButton.addEventListener("click", startQuiz);
 
 
 //display questions using object literals, while using one big array
-const questions = [
+const myQuestions = [
     {
         question: "What is the DOM?",
         answers: {
@@ -65,24 +69,43 @@ const questions = [
         correctAnswer: "c"
     },
     {
-        question: "",
+        question: "What property will return the element's value attribute?",
         answers: {
-            a: "",
-            b: "",
-            c: ""
+            a: ".value",
+            b: ".style",
+            c: ".appendChild"
         },
-        correctAnswer: ""
+        correctAnswer: "a"
     },
     {
-        question: "",
+        question: "Which one is not an essential Element Method?",
         answers: {
-            a: "",
-            b: "",
-            c: ""
+            a: ".getAttribute",
+            b: "Javascript",
+            c: ".addEventListener"
         },
-        correctAnswer: ""
+        correctAnswer: "b"
     },
 
 
 
-]
+];
+
+let currentQuestion = questionAnswer[0]
+
+question.textContent = currentQuestion.question;
+button1.textcontent = currentQuestion.answers[0];
+button2.textcontent = currentQuestion.answers[1];
+button3.textcontent = currentQuestion.answers[2];
+
+
+
+let index = 0;
+
+
+// now we should be able to see the questions one at a time
+
+function buildQuiz() {
+
+}
+
