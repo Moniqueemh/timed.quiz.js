@@ -91,7 +91,7 @@ const myQuestions = [
 
 ];
 
-let currentQuestion = questionAnswer[0]
+let currentQuestion = myQuestions[0]
 
 question.textContent = currentQuestion.question;
 button1.textcontent = currentQuestion.answers[0];
@@ -100,7 +100,7 @@ button3.textcontent = currentQuestion.answers[2];
 
 
 
-let index = 0;
+
 
 
 // now we should be able to see the questions one at a time
